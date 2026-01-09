@@ -1,4 +1,4 @@
-package com.johnkenedy.cryptotracker.util
+package com.johnkenedy.cryptotracker.core.presentation
 
 import com.johnkenedy.cryptotracker.R
 
