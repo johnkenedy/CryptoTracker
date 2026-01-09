@@ -25,6 +25,7 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v41
         with:
+          separator: ","
           files: |
             **/*.kt
             **/*.kts
@@ -32,9 +33,7 @@ jobs:
       - name: Run Detekt
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          # Pega a lista de arquivos e troca espaços por vírgulas para o Detekt entender
-          FILES="${{ steps.changed-files.outputs.all_changed_files }}"
-          ./gradlew detekt --input ${FILES// /,}
+          ./gradlew detekt --includes "${{ steps.changed-files.outputs.all_changed_files }}"
 
       - name: Run Android Lint
         run: ./gradlew lintDebug
