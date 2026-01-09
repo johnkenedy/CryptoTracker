@@ -62,6 +62,14 @@ detekt {
     config.setFrom(files("$rootDir/config/detekt/detekt.yml"))
     buildUponDefaultConfig = true
     allRules = false
+    source.setFrom(files("src/main/java", "src/main/kotlin"))
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    val files = project.findProperty("detektFiles") as? String
+    if (!files.isNullOrBlank()) {
+        setSource(project.files(files.split(",")))
+    }
 }
 
 kotlin {
