@@ -1,5 +1,8 @@
 package com.johnkenedy.cryptotracker.crypto.presentation.coin_list
 
-sealed interface CoinListAction {
+import com.johnkenedy.cryptotracker.crypto.presentation.models.CoinUi
 
+sealed interface CoinListAction {
+    data class OnCoinClick(val coinUi: CoinUi): CoinListAction
+    data object OnRefresh: CoinListAction
 }
