@@ -1,0 +1,28 @@
+name: Add Reviewers
+
+on:
+  pull_request:
+    # Dispara quando o PR é aberto ou quando sai de 'Draft' para 'Ready for review'
+    types: [opened, ready_for_review]
+
+jobs:
+  assign-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Reviewers
+        uses: madrapps/add-reviewers@v1
+        with:
+          # O GITHUB_TOKEN padrão já tem permissão para isso
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Liste os usuários do GitHub (case-sensitive) separados por vírgula
+          reviewers: johnkenedy,LucasSimoesMartins
+          
+          # Opcional: Adicionar times (formato: org/team-slug)
+          # team-reviewers: meu-time-android/core-devs
+          
+          # Mantém o fluxo ativo se alguém aprovar mas houver novos commits
+          re-request-when-approved: true
+          
+          # Re-solicita se o revisor pediu mudanças e você enviou um novo fix
+          re-request-when-changes-requested: true
