@@ -1,3 +1,4 @@
+@file:Suppress("detekt.LargeClass")
 package com.johnkenedy.cryptotracker.core.presentation
 
 import com.johnkenedy.cryptotracker.R

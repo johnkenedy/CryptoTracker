@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.johnkenedy.cryptotracker.core.data.networking
 
 import com.johnkenedy.cryptotracker.core.domain.util.NetworkError
