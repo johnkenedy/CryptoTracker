@@ -2,15 +2,15 @@ name: Android Quality & Reviewers
 
 on:
   pull_request:
-    # 'synchronize' faz o check rodar de novo se você enviar novos commits
+    # 'synchronize' ensures the check runs again whenever new commits are pushed to the PR
     types: [opened, ready_for_review, synchronize]
 
 jobs:
   validation-and-review:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout do Código
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -20,15 +20,15 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      # Executa o Detekt (Análise estática de Kotlin)
+      # Run Detekt (Kotlin static code analysis)
       - name: Run Detekt
         run: ./gradlew detekt
 
-      # Executa o Lint do Android (Geralmente no build variant Debug)
+      # Run Android Lint (Typically executed on the Debug build variant)
       - name: Run Android Lint
         run: ./gradlew lintDebug
 
-      # Este passo só será executado se o Detekt e o Lint passarem com sucesso
+      # This step will only execute if both Detekt and Lint pass successfully
       - name: Add Reviewers
         uses: madrapps/add-reviewers@v1
         with:

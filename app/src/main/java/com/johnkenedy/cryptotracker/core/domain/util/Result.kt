@@ -1,4 +1,4 @@
-package com.johnkenedy.cryptotracker.util
+package com.johnkenedy.cryptotracker.core.domain.util
 
 typealias DomainError = Error
 
