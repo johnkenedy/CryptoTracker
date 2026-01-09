@@ -33,7 +33,7 @@ jobs:
       - name: Run Detekt
         if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          ./gradlew detekt --includes "${{ steps.changed-files.outputs.all_changed_files }}"
+          ./gradlew detekt -PdetektFiles="${{ steps.changed-files.outputs.all_changed_files }}"
 
       - name: Run Android Lint
         run: ./gradlew lintDebug
