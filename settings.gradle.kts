@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CriptoTracker"
+rootProject.name = "CryptoTracker"
 include(":app")
