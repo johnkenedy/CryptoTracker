@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.johnkenedy.cryptotracker.core.domain.util.onError
 import com.johnkenedy.cryptotracker.core.domain.util.onSuccess
 import com.johnkenedy.cryptotracker.crypto.domain.CoinDataSource
+import com.johnkenedy.cryptotracker.crypto.presentation.models.CoinUi
 import com.johnkenedy.cryptotracker.crypto.presentation.models.toCoinUi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -41,13 +42,15 @@ class CoinListViewModel(
 
     fun onAction(action: CoinListAction) {
         when (action) {
-            is CoinListAction.OnCoinClick -> onCoinClick()
+            is CoinListAction.OnCoinClick -> onCoinClick(action.coinUi)
             is CoinListAction.OnRefresh -> loadCoins()
         }
     }
 
-    private fun onCoinClick() {
-        TODO("Not yet implemented")
+    private fun onCoinClick(coinUi: CoinUi) {
+        _state.update { it.copy(
+            selectedCoin = coinUi
+        ) }
     }
 
     private fun loadCoins() {
