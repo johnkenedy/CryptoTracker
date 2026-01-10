@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.time.ZonedDateTime
 
 class CoinListViewModel(
     private val coinDataSource: CoinDataSource
@@ -48,9 +49,22 @@ class CoinListViewModel(
     }
 
     private fun onCoinClick(coinUi: CoinUi) {
-        _state.update { it.copy(
-            selectedCoin = coinUi
-        ) }
+        _state.update { it.copy(selectedCoin = coinUi) }
+
+        viewModelScope.launch {
+            coinDataSource
+                .getCoinHistory(
+                    coinID = coinUi.id,
+                    start = ZonedDateTime.now().minusDays(5),
+                    end = ZonedDateTime.now()
+                )
+                .onSuccess { history ->
+
+                }
+                .onError { error ->
+                    _events.send(CoinListEvent.Error(error))
+                }
+        }
     }
 
     private fun loadCoins() {
