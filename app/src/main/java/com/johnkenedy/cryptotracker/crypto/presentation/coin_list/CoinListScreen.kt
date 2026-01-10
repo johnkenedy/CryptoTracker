@@ -1,5 +1,6 @@
 package com.johnkenedy.cryptotracker.crypto.presentation.coin_list
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,9 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.johnkenedy.cryptotracker.core.presentation.util.ObserveAsEvent
+import com.johnkenedy.cryptotracker.core.presentation.util.toString
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.previewCoin
 import com.johnkenedy.cryptotracker.ui.theme.CryptoTrackerTheme
@@ -28,6 +32,19 @@ fun CoinListScreenRoot(
     viewModel: CoinListViewModel = koinViewModel<CoinListViewModel>()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+
+    ObserveAsEvent(events = viewModel.events) { event ->
+        when (event) {
+            is CoinListEvent.Error -> {
+                Toast.makeText(
+                    context,
+                    event.error.toString(context),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
 
     CoinListScreenScreen(
         state = state,
