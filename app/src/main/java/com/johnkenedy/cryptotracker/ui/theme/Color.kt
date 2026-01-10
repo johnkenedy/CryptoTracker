@@ -1,6 +1,8 @@
-@file:Suppress("MagicNumber")
 package com.johnkenedy.cryptotracker.ui.theme
 
+import androidx.compose.material3.ColorScheme
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Brush.Companion.verticalGradient
 import androidx.compose.ui.graphics.Color
 
 val greenBackground = Color(0xFF119B00)
@@ -219,3 +221,24 @@ val surfaceContainerLowDarkHighContrast = Color(0xFF181D18)
 val surfaceContainerDarkHighContrast = Color(0xFF1C211B)
 val surfaceContainerHighDarkHighContrast = Color(0xFF272B26)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF313630)
+
+val ColorScheme.lineChartGradient: Brush
+    get() = verticalGradient(
+        colors = listOf(
+            this.primary,
+            this.primary.copy(alpha = 0.4f),
+            Color.Transparent
+        )
+    )
+
+fun ColorScheme.lineChartAreaGradient(startY: Float, endY: Float): Brush {
+    return verticalGradient(
+        colors = listOf(
+            this.primary.copy(alpha = 0.4f),
+            this.primary.copy(alpha = 0.1f),
+            Color.Transparent
+        ),
+        startY = startY,
+        endY = endY
+    )
+}
