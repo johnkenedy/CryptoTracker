@@ -1,8 +1,8 @@
 package com.johnkenedy.cryptotracker.crypto.presentation.models
 
 import androidx.annotation.DrawableRes
+import com.johnkenedy.cryptotracker.core.presentation.util.getDrawableIdForCoin
 import com.johnkenedy.cryptotracker.crypto.domain.Coin
-import com.johnkenedy.cryptotracker.core.presentation.getDrawableIdForCoin
 import java.text.NumberFormat
 import java.util.Locale
 
