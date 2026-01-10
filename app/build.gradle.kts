@@ -32,7 +32,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://api.coincap.io/v3/\"")
+            buildConfigField("String", "BASE_URL", "\"https://rest.coincap.io/v3/\"")
             buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("API_KEY", "")}\"")
         }
         release {
@@ -42,7 +42,7 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "BASE_URL", "\"https://api.coincap.io/v3/\"")
+            buildConfigField("String", "BASE_URL", "\"https://rest.coincap.io/v3/\"")
             buildConfigField("String", "API_KEY", "\"${localProperties.getProperty("API_KEY", "")}\"")
         }
     }

@@ -17,20 +17,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.previewCoin
 import com.johnkenedy.cryptotracker.ui.theme.CryptoTrackerTheme
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoinListScreenRoot(
-    viewModel: CoinListViewModel = viewModel()
+    modifier: Modifier = Modifier,
+    viewModel: CoinListViewModel = koinViewModel<CoinListViewModel>()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     CoinListScreenScreen(
         state = state,
-        onAction = viewModel::onAction
+        onAction = viewModel::onAction,
+        modifier = modifier
     )
 }
 
