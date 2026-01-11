@@ -9,21 +9,20 @@
 Here you can view the application interface in different contexts:
 
 ### 📱 Mobile Version
-<p align="center">
-  <img src="path/to/your/mobile_image.png" width="300" alt="CryptoTracker Mobile">
-</p>
+
+<img src="https://github.com/user-attachments/assets/944a28d2-2c27-462a-904c-adbb7aa7593c" width="220" alt="CryptoTracker Mobile">
+<img src="https://github.com/user-attachments/assets/e5f9dc8d-21bd-442e-9d8b-32fb653c383c" width="220" alt="CryptoTracker Mobile">
 
 ### 🖥️ Tablet Version 
 (Adaptive Layout)
-<p align="center">
-  <img src="path/to/your/tablet_image.png" width="600" alt="CryptoTracker Tablet">
-</p>
+
+<img width="1057" height="663" alt="Screenshot 2026-01-10 at 21 05 31" src="https://github.com/user-attachments/assets/a1a4e037-0413-4535-a252-f00a7042286d" />
+
 
 ### 📊 CryptoChart (Custom Canvas)
 *Price variation chart developed from scratch using the Jetpack Compose Canvas API.*
-<p align="center">
-  <img src="path/to/your/canvas_image.png" width="600" alt="CryptoChart Canvas">
-</p>
+
+  <img src="https://github.com/user-attachments/assets/a6b91d8d-4007-4d50-a555-fc5b531b498b" width="600" alt="CryptoChart Canvas">
 
 ---
 
@@ -63,7 +62,7 @@ com.johnkenedy.cryptotracker
 ```
 
 ### Architectural Details
-- **MVVM (Model-View-ViewModel):** Used in the presentation layer to separate business logic from the UI.
+- **MVI (Model-View-Intent):** Used in the presentation layer to separate business logic from the UI.
 - **UDF (Unidirectional Data Flow):** Screen states are managed via `StateFlow` and events via `Channel`, ensuring predictability.
 - **Mapper Pattern:** Conversion of DTOs (Data Transfer Objects) to domain models to avoid leaking network dependencies to the UI.
 
@@ -73,7 +72,7 @@ com.johnkenedy.cryptotracker
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/CryptoTracker.git
+   git clone https://github.com/johnkenedy/CryptoTracker.git
    ```
 2. Add your API key (optional) in the `local.properties` file:
    ```properties
