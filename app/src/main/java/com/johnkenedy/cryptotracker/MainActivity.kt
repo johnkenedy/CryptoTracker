@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.CoinListScreenRoot
+import com.johnkenedy.cryptotracker.core.navigation.AdaptiveCoinListDetailPane
 import com.johnkenedy.cryptotracker.ui.theme.CryptoTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CryptoTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CoinListScreenRoot(
+                    AdaptiveCoinListDetailPane(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
