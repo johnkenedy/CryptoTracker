@@ -54,6 +54,7 @@ class CoinListViewModel(
         _state.update { it.copy(selectedCoin = coinUi) }
 
         viewModelScope.launch {
+            _events.send(CoinListEvent.NavigateToCoinDetail(coinUi))
             coinDataSource
                 .getCoinHistory(
                     coinID = coinUi.id,

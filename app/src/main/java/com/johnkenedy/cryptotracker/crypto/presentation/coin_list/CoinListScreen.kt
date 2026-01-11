@@ -23,12 +23,13 @@ import com.johnkenedy.cryptotracker.core.presentation.util.ObserveAsEvent
 import com.johnkenedy.cryptotracker.core.presentation.util.toString
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.johnkenedy.cryptotracker.crypto.presentation.coin_list.components.previewCoin
+import com.johnkenedy.cryptotracker.crypto.presentation.models.CoinUi
 import com.johnkenedy.cryptotracker.ui.theme.CryptoTrackerTheme
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CoinListScreenRoot(
-    modifier: Modifier = Modifier,
+    onNavigateToCoinListDetail: (CoinUi) -> Unit,
     viewModel: CoinListViewModel = koinViewModel<CoinListViewModel>()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -43,13 +44,15 @@ fun CoinListScreenRoot(
                     Toast.LENGTH_LONG
                 ).show()
             }
+            is CoinListEvent.NavigateToCoinDetail -> {
+                onNavigateToCoinListDetail(event.coinUi)
+            }
         }
     }
 
     CoinListScreenScreen(
         state = state,
-        onAction = viewModel::onAction,
-        modifier = modifier
+        onAction = viewModel::onAction
     )
 }
 
