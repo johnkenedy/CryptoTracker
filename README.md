@@ -91,4 +91,11 @@ com.johnkenedy.cryptotracker
 
 ---
 
+## 🔮 Future Features
+- **Favorites:** Mark your favorite coins for quick access.
+- **Wallet:** Track your crypto holdings and portfolio value.
+- **Comparison:** Compare multiple cryptocurrencies side-by-side.
+
+---
+
 Developed by [John Kenedy](https://github.com/johnkenedy) 👋
